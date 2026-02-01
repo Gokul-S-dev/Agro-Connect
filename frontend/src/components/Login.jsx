@@ -1,15 +1,25 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import './Login.css'
-
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('Login:', { email, password })
+    try{
+      const res = await axios.post('http://localhost:3000/api/auth/login',{ email, password });
+      res.data && alert(res.data.message);
+      navigate('/dashboard');
+    }catch(err){
+      console.log(err.message);
+    }
   }
 
   return (

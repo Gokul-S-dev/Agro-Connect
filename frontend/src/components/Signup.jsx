@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Signup.css'
-
+import axios from 'axios'
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -17,9 +17,22 @@ const Signup = () => {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('Signup:', formData)
+    // const res = await axios.post('http://localhost:3000/api/auth/signup', formData)
+    // const data = await res.json();
+    // console.log(data);
+
+    try{
+      const res = await axios.post(
+        'http://localhost:3000/api/auth/signup',
+        formData
+      );
+      console.log(res.data); // Data is here
+    }catch(err){
+      console.log(err.response);
+    }
   }
 
   return (

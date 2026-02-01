@@ -2,8 +2,10 @@
   "name": "agro-connect-backend",
   "version": "0.0.1",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,15 @@
     "url": "https://github.com/Gokul-S-dev/Agro-Connect/issues"
   },
   "homepage": "https://github.com/Gokul-S-dev/Agro-Connect#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.1.5",
+    "nodemon": "^3.1.11"
+  }
 }
